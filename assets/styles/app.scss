@@ -1,5 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
 
-body {
-    background-color: lightgray;
+:root {
+    --ws-primary : #900000
 }
+
+body {
+    background-color: #1D1C1C;
+    color: white;
+}
+
+.ws-primary {
+    background-color: var(--ws-primary);
+}
+
