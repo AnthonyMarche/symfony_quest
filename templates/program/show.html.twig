@@ -14,15 +14,16 @@
 
     <div class="media">
         {% for season in program.seasons %}
-        <div class="media-body">
-            <a href="{{ path('program_season_show', { 'programId' : program.id, 'seasonId': season.id }) }}">            <h3>Saison {{ season.number }} - {{ season.year }}</h3>
-            </a>
-            <p>{{ season.description }}</p>
+            <div class="media-body">
+                <a href="{{ path('program_season_show', { 'programId' : program.id, 'seasonId': season.id }) }}">
+                    <h3>Saison {{ season.number }} - {{ season.year }}</h3>
+                </a>
+                <p>{{ season.description }}</p>
 
-        </div>
+            </div>
         {% endfor %}
     </div>
-    
+
     <a href="{{ path('program_index') }}">
         Retour à la liste des programmes
     </a>
