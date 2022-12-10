@@ -1,5 +1,5 @@
 <?php
-// src/Controller/ProgramController.php
+
 namespace App\Controller;
 
 use App\Entity\Episode;
@@ -7,7 +7,6 @@ use App\Entity\Program;
 use App\Entity\Season;
 use App\Form\ProgramType;
 use App\Repository\ProgramRepository;
-use App\Repository\SeasonRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +27,7 @@ class ProgramController extends AbstractController
         );
     }
 
-    #[Route('/new', name: 'new')]
+    #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProgramRepository $programRepository) : Response
     {
         $program = new Program();
@@ -39,6 +38,8 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $programRepository->save($program, true);
+
+            $this->addFlash('success', 'The new program has been created');
 
             return $this->redirectToRoute('program_index');
         }
