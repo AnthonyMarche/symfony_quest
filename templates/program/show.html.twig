@@ -7,15 +7,25 @@
         <img class="align-self-start mr-3" src="{{ program.poster }}" alt="{{ program.title }} poster">
         <div class="media-body">
             <h1 class="mt-0">{{ program.title }}</h1>
-            <p>{{ program.synopsis }}</p>
+
             <p>Catégorie : {{ program.category.name }}</p>
+
+            <h4>Durée totale de la série :</h4>
+            {% if programDuration.0 > 0 %}
+                <p>{{ programDuration.0 }} jour, {{ programDuration.1 }} heures {{ programDuration.2 }} minutes</p>
+            {% else %}
+                <p>{{ programDuration.1 }} heures {{ programDuration.2 }} minutes</p>
+            {% endif %}
+
+            <h3>Synopsis :</h3>
+            <p>{{ program.synopsis }}</p>
         </div>
     </div>
 
     <div class="media">
         {% for season in program.seasons %}
             <div class="media-body">
-                <a href="{{ path('program_season_show', { 'program' : program.id, 'season': season.id }) }}">
+                <a href="{{ path('program_season_show', { 'slug' : program.slug, 'season': season.id }) }}">
                     <h3>Saison {{ season.number }} - {{ season.year }}</h3>
                 </a>
                 <p>{{ season.description }}</p>
@@ -32,7 +42,6 @@
             <li>Aucun acteur pour cette série</li>
         {% endfor %}
     </ul>
-
 
     <a href="{{ path('program_index') }}">
         Retour à la liste des programmes
