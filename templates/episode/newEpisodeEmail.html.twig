@@ -1,0 +1,14 @@
+{% extends 'layoutEmail.html.twig' %}
+
+{% block title %} New episod {% endblock %}
+
+{% block body %}
+    <h1>New episod {{ episode.title }} created</h1>
+    <p>Hello, the new episod {{ episode.title }} for the program {{ episode.season.program.title }} has been created on
+        Wild Series !</p>
+    <p>Synopsis : {{ episode.synopsis }}</p>
+    <p>You can see it now <a
+                href="http://127.0.0.1:8000{{ path('program_season_show', { 'slug' : episode.season.program.slug, 'season' : episode.season.number }) }}">HERE</a>
+    </p>
+
+{% endblock %}
