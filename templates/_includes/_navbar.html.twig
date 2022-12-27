@@ -18,11 +18,11 @@
                         Category
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Aventure</a></li>
-                        <li><a class="dropdown-item" href="#">Animation</a></li>
-                        <li><a class="dropdown-item" href="#">Fantastique</a></li>
-                        <li><a class="dropdown-item" href="#">Horreur</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Action'}) }}">Action</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Aventure'}) }}">Aventure</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Animation'}) }}">Animation</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Fantastique'}) }}">Fantastique</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Horreur'}) }}">Horreur</a></li>
 
                     </ul>
                 </li>
