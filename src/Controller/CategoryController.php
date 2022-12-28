@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use App\Repository\ProgramRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +26,7 @@ class CategoryController extends AbstractController
 
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'new')]
     public function new(Request $request, CategoryRepository $categoryRepository) : Response
     {

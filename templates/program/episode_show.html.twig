@@ -14,10 +14,13 @@
     <div>
         <p>Autheur : {{ comment.author.email }} - {{ comment.rate }}/5</p>
         <p>{{ comment.comment }}</p>
+            {% if comment.author.email == app.user.email or is_granted("ROLE_ADMIN") %}
+                <button><a href="{{ path("app_comment_delete", { id: comment.id }) }}">Supprimer</a></button>
+            {% endif %}
     </div>
     {% endfor %}
 
-    {% if app.user %}
+    {% if is_granted("ROLE_CONTRIBUTOR") or is_granted("ROLE_ADMIN") %}
         {{ form_start(form) }}
         {{ form_widget(form) }}
         <button type="submit">Add comment</button>
