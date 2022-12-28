@@ -32,5 +32,12 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
+        {% if app.user %}
+            {{ app.user.email }}
+            <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+        {% else %}
+            <a href="{{ path('app_login') }}"> Se connecter</a>
+        {% endif %}
+
     </div>
 </nav>

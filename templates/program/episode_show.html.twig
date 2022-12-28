@@ -9,6 +9,21 @@
     <h3>Episode {{ episode.number }} - {{ episode.title }}</h3>
     <p>{{ episode.synopsis }}</p>
 
+    <h3>Commentaires</h3>
+    {% for comment in comments %}
+    <div>
+        <p>Autheur : {{ comment.author.email }} - {{ comment.rate }}/5</p>
+        <p>{{ comment.comment }}</p>
+    </div>
+    {% endfor %}
+
+    {% if app.user %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Add comment</button>
+        {{ form_end(form) }}
+    {% endif %}
+
     <a href="{{ path('program_season_show', { 'slug' : program.slug, 'season': season.id }) }}">
         Retour à la liste des épisodes</a>
 
