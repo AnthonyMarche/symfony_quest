@@ -34,9 +34,10 @@
         </div>
         {% if app.user %}
             {{ app.user.email }}
-            <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+            <a href="{{ path('app_logout') }}" class="btn btn-light" role="button">Se déconnecter</a>
         {% else %}
-            <a href="{{ path('app_login') }}"> Se connecter</a>
+            <a href="{{ path('app_register') }}" class="btn btn-light" role="button">S'inscrire</a>
+            <a href="{{ path('app_login') }}" class="btn btn-light" role="button">Se connecter</a>
         {% endif %}
 
     </div>
