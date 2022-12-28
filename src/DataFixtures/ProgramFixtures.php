@@ -34,6 +34,11 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         'category_Action',
     ];
 
+    public const OWNER = [
+        'contributor',
+        'admin'
+    ];
+
     private SluggerInterface $slugger;
 
     public function __construct(SluggerInterface $slugger)
@@ -50,6 +55,10 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setCategory($this->getReference(self::CATEGORIES[$i]));
             $slug = $this->slugger->slug($program->getTitle());
             $program->setSlug($slug);
+
+            $rand = rand(0, 1);
+            $program->setOwner($this->getReference(self::OWNER[$rand]));
+
             $manager->persist($program);
             $this->addReference('program_' . $i, $program);
         }
