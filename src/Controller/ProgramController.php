@@ -45,7 +45,7 @@ class ProgramController extends AbstractController
     }
 
     #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
-    public function new(Request $request, MailerInterface $mailer, ProgramRepository $programRepository, SluggerInterface $slugger) : Response
+    public function new(Request $request, MailerInterface $mailer, ProgramRepository $programRepository, SluggerInterface $slugger): Response
     {
         $program = new Program();
 
@@ -123,7 +123,7 @@ class ProgramController extends AbstractController
                 'programSlug' => $program->getSlug(),
                 'seasonId' => $season->getId(),
                 'episodeSlug' => $episode->getSlug()
-                ]);
+            ]);
         }
 
         $comments = $episode->getComments();
@@ -170,7 +170,7 @@ class ProgramController extends AbstractController
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Program $program, ProgramRepository $programRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $program->getId(), $request->request->get('_token'))) {
             $programRepository->remove($program, true);
 
             $this->addFlash('danger', 'The season has been deleted');
@@ -200,5 +200,6 @@ class ProgramController extends AbstractController
 
         return $this->json([
             'isInWatchlist' => $this->getUser()->isInWatchlist($program)
-        ]);    }
+        ]);
+    }
 }
