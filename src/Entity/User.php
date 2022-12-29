@@ -38,12 +38,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $programs;
 
     #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
+    private bool $isVerified = false;
+
+    #[ORM\ManyToMany(targetEntity: Program::class, inversedBy:'viewers')]
+    #[ORM\JoinTable(name:'watchlist')]
+    private collection $watchlist;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->programs = new ArrayCollection();
+        $this->watchlist = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -186,5 +191,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Program>
+     */
+    public function getWatchlist(): Collection
+    {
+        return $this->watchlist;
+    }
+
+    public function addToWatchlist(Program $watchlist): self
+    {
+        if (!$this->watchlist->contains($watchlist)) {
+            $this->watchlist->add($watchlist);
+        }
+
+        return $this;
+    }
+
+    public function removeFromWatchlist(Program $watchlist): self
+    {
+        $this->watchlist->removeElement($watchlist);
+
+        return $this;
+    }
+
+    public function isInWatchlist(Program $program): bool
+    {
+        $watchList = $this->getWatchlist();
+        if (in_array($program, $watchList->toArray())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
