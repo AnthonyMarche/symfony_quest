@@ -1,0 +1,14 @@
+navBar.home: Accueil
+navBar.category: Catégorie
+navBar.category.action: Action
+navBar.category.adventure: Aventure
+navBar.category.animation: Animation
+navBar.category.fantastic: Fantastique
+navBar.category.horror: Horreur
+hello_username: 'Bonjour %username%'
+account.sign_in: Connexion
+account.register: Inscription
+account.logout: Deconnexion
+navBar.language: Langue
+navBar.language.fr: Français
+navBar.language.en: Anglais

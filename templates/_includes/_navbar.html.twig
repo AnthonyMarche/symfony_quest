@@ -8,22 +8,27 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link active" aria-current="page" href="#">{{ 'navBar.home'|trans }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Category
+                        {{ 'navBar.category'|trans }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Action'}) }}">Action</a></li>
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Aventure'}) }}">Aventure</a></li>
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Animation'}) }}">Animation</a></li>
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Fantastique'}) }}">Fantastique</a></li>
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Horreur'}) }}">Horreur</a></li>
-
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Action'}) }}">{{ 'navBar.category.action'|trans }}</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Aventure'}) }}">{{ 'navBar.category.adventure'|trans }}</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Animation'}) }}">{{ 'navBar.category.animation'|trans }}</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Fantastique'}) }}">{{ 'navBar.category.fantastic'|trans }}</a></li>
+                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Horreur'}) }}">{{ 'navBar.category.horror'|trans }}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ 'navBar.language'|trans }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ path('change_language', { 'choice': 'fr'}) }}">{{ 'navBar.language.fr'|trans }}</a></li>
+                        <li><a class="dropdown-item" href="{{ path('change_language', { 'choice': 'en'}) }}">{{ 'navBar.language.en'|trans }}</a></li>
                     </ul>
                 </li>
             </ul>
@@ -34,11 +39,13 @@
         </div>
         {% if app.user %}
             {{ app.user.email }}
-            <a href="{{ path('app_logout') }}" class="btn btn-light" role="button">Se déconnecter</a>
+            {% trans with {'%username%': app.user.email} %}
+                hello_username
+            {% endtrans %} !
+            <a href="{{ path('app_logout') }}" class="btn btn-light" role="button">{{ 'account.logout'|trans }}r</a>
         {% else %}
-            <a href="{{ path('app_register') }}" class="btn btn-light" role="button">S'inscrire</a>
-            <a href="{{ path('app_login') }}" class="btn btn-light" role="button">Se connecter</a>
+            <a href="{{ path('app_register') }}" class="btn btn-light" role="button">{{ 'account.register'|trans }}</a>
+            <a href="{{ path('app_login') }}" class="btn btn-light" role="button">{{ 'account.sign_in'|trans }}</a>
         {% endif %}
-
     </div>
 </nav>
