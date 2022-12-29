@@ -16,7 +16,7 @@
     </head>
     <body>
     <header>
-        {% include '/_includes/_navbar.html.twig' %}
+        {{ render(controller('App\\Controller\\DefaultController::navbarTop')) }}
     </header>
     {% for category, messages in app.flashes %}
         {% for message in messages %}

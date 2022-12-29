@@ -1,10 +1,5 @@
 navBar.home: Home
 navBar.category: Category
-navBar.category.action: Action
-navBar.category.adventure: Adventure
-navBar.category.animation: Animation
-navBar.category.fantastic: Fantastic
-navBar.category.horror: Horror
 hello_username: 'Hello %username%'
 account.sign_in: 'Sign in'
 account.register: Register

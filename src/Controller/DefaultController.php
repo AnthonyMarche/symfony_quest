@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,5 +20,12 @@ class DefaultController extends AbstractController
     public function changeLanguage($choice): Response
     {
         return $this->redirectToRoute('app_index', ['_locale' => $choice]);
+    }
+
+    public function navbarTop(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('_includes/_navbar.html.twig', [
+            'categories' => $categoryRepository->findBy([], ['id' => 'DESC'])
+        ]);
     }
 }
