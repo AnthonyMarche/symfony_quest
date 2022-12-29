@@ -25,7 +25,7 @@ class DefaultController extends AbstractController
     public function navbarTop(CategoryRepository $categoryRepository): Response
     {
         return $this->render('_includes/_navbar.html.twig', [
-            'categories' => $categoryRepository->findBy([], ['id' => 'DESC'])
+            'categories' => $categoryRepository->findBy([], ['name' => 'ASC'])
         ]);
     }
 }
