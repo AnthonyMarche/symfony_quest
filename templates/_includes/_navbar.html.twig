@@ -15,12 +15,9 @@
                         {{ 'navBar.category'|trans }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Action'}) }}">{{ 'navBar.category.action'|trans }}</a></li>
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Aventure'}) }}">{{ 'navBar.category.adventure'|trans }}</a></li>
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Animation'}) }}">{{ 'navBar.category.animation'|trans }}</a></li>
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Fantastique'}) }}">{{ 'navBar.category.fantastic'|trans }}</a></li>
-                        <li><a class="dropdown-item" href="{{ path('category_show', { 'categoryName' : 'Horreur'}) }}">{{ 'navBar.category.horror'|trans }}</a></li>
-                    </ul>
+                        {% for category in categories %}
+                            <li><a class="dropdown-item" href="{{ path('category_show', {categoryName:category.name}) }}">{{ category.name }}</a></li>
+                        {% endfor %}</ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
